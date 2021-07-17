@@ -1,0 +1,39 @@
+{% load static %}
+<p class="fw-bolder fs-1">
+    {{ note.title }}
+    {% if user.is_authenticated %}
+        {% if exists %}
+            <img id="star" src="{% static 'svg/bookmark-star-fill.svg' %}"
+                 onclick="delete_bookmark({{ bookmark }}, '{{ csrf_token }}')">
+        {% else %}
+            <img id="star" src="{% static 'svg/bookmark-star.svg' %}"
+                 onclick="star({{ note.id }}, '{{ csrf_token }}')">
+        {% endif %}
+    {% endif %}
+</p>
+<p class="fw-light fs-6">
+    Дата создания: {{ note.date }}
+</p>
+<img src="{{ note.photo }}" class="img-fluid img-thumbnail" alt="{{ note.title }}">
+{% if user.is_authenticated %}
+    {% if exists %}
+        <div id="user_info" style="display: block">
+            <p id="last_watering">
+                {{ last_watering }}
+            </p>
+            <button id="water_btn" type="button" class="btn btn-outline-info"
+                    onclick="water({{ bookmark }}, '{{ csrf_token }}', 'false')">
+                Полить!
+            </button>
+            <p id="last_fertilize">
+                {{ last_fertilize }}
+            </p>
+            <button id="fertilize" type="button" class="btn btn-outline-info"
+                    onclick="fertilize({{ bookmark }}, '{{ csrf_token }}', 'false')">Удобрить!
+            </button>
+        </div>
+    {% endif %}
+{% endif %}
+<p class="fw-normal fs-4">
+    {{ note.text }}
+</p>

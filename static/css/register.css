@@ -1,0 +1,25 @@
+.register_box {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.register_box input[name="username"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.register_box input[name="rep_password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.register_box input[type="submit"], .register_box input[type="button"] {
+    margin: 0 auto;
+    display: block;
+}

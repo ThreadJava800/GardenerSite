@@ -1,0 +1,30 @@
+{% extends 'user/base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="login_box">
+        <h1>
+            Вход
+        </h1>
+        <form method="POST" action="login">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <input type="submit" class="btn btn-primary" value="Войти">
+            {% endbuttons %}
+        </form>
+        <input type="button" class="btn btn-primary center-block" id="to_register"
+               value="Ещё не в системе? Регистрация">
+        <script type="text/javascript">
+            document.getElementById("to_register").onclick = function () {
+                location.href = "/register_page"
+            }
+        </script>
+        <a href="/forgot_pass">
+            Забыли пароль?
+        </a>
+    </div>
+{% endblock %}

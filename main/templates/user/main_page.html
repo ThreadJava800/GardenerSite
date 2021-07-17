@@ -1,0 +1,18 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/main_page.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="card">
+        <h5 class="card-header">Наш ассортимент</h5>
+        {% for note in notes %}
+            <img src="{{ note.photo }}" class="card-img-top" alt="{{ note.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ note.title }}</h5>
+                <p class="card-text">{{ note.date }}</p>
+                <a href="/{{ note.id }}" class="btn btn-primary">Смотреть</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'user/base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="register_box">
+        <h1>
+            Регистрация
+        </h1>
+        <form method="POST" action="register">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <input type="submit" class="btn btn-primary" value="Зарегестрироваться">
+            {% endbuttons %}
+        </form>
+        <input type="button" class="btn btn-primary" id="to_login" value="Уже зарегестрированы? Войти">
+        <script type="text/javascript">
+            document.getElementById("to_login").onclick = function () {
+                location.href = "/login_page"
+            }
+        </script>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/view_note.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="card note-block">
+        <h5 class="card-header">Закладки</h5>
+        {% for d in data %}
+            <div class="card-body">
+                <h5 class="card-title">{{ d.bookmark.note }}</h5>
+                <p class="card-text">{{ d.date }}</p>
+                <a href="/{{ d.id }}" class="btn btn-primary">Смотреть</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

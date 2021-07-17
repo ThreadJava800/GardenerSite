@@ -1,0 +1,14 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/view_note.css' %}">
+{% endblock %}
+{% block content %}
+    <div id="note-block" class="note-block">
+        {% include 'user/note_block.html' %}
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

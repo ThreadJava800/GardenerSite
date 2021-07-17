@@ -1,0 +1,18 @@
+body {
+    background-color: #F1F1F1;
+}
+
+.card {
+    margin: auto;
+    max-width: 60em;
+    alignment: center;
+}
+
+.card img {
+    max-height: 30em;
+}
+
+.card-header {
+    margin: auto;
+    background-color: white;
+}

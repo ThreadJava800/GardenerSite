@@ -1,0 +1,27 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/view_note.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="card note-block">
+        <h5 class="card-header">Ближайшие поливы</h5>
+        {% if data %}
+            {% for d in data %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ d.title }}</h5>
+                    <p id="last_watering_{{ d.bookmark }}" class="card-text">{{ d.days }}</p>
+                    <button id="water-btn" type="button" class="btn btn-primary" onclick="water({{ d.bookmark }}, '{{ csrf_token }}', 'true')">Полить</button>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1>
+                Вы ещё ничего не поливали
+            </h1>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

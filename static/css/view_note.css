@@ -1,0 +1,27 @@
+body {
+    background-color: #F1F1F1;
+}
+
+.note-block {
+    margin: auto;
+    max-width: 60em;
+    alignment: center;
+}
+
+.note-block img {
+    max-height: 30em;
+    margin: auto;
+}
+
+.note-block p, .note-block h5 {
+    margin-left: 5px;
+}
+
+.note-block p[id="last_watering"], .note-block p[id="last_fertilize"] {
+    margin: 5px;
+    display: inline-block;
+}
+
+h1 {
+    margin: auto;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gardener - All</title>
+</head>
+<body>
+<ul>
+{{ last_login }}
+{% for u in data %}
+     <li>
+        {{ u.username }} ({{ u.email }}) {{ u.last_login }}
+     </li>
+{%  endfor %}
+</ul>
+</body>
+</html>

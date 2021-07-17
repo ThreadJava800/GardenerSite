@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gardener - Moderator main page</title>
+</head>
+<body>
+    <input id="add_button" type="button" value="Add">
+    <script type="text/javascript">
+        document.getElementById("add_button").onclick = function () {
+            location.href = "/moder/add";
+        };
+    </script>
+    {% for note in notes %}
+        <ul>
+            <li>
+                <a href="/moder/{{ note.id }}">
+                    {{ note.title }}
+                </a>
+                <input id="note_{{ note.id }}" type="button" value="Delete">
+                <script type="text/javascript">
+                    document.getElementById("note_{{ note.id }}").onclick = function () {
+                        location.href = "/moder/delete/{{ note.id }}";
+                    };
+                </script>
+            </li>
+        </ul>
+    {% endfor %}
+</body>
+</html>

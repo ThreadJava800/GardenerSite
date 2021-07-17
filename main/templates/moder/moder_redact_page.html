@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gardener - Redact note</title>
+</head>
+<body>
+    <form method="POST" action="change">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Save" >
+    </form>
+</body>
+</html>

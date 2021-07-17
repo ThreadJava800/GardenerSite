@@ -1,0 +1,109 @@
+{% extends 'user/base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/view_note.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="accordion note-block" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    Сменить пароль
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form method="POST" action="change_pass">
+                        <h1>
+                            Сменить пароль
+                        </h1>
+                        {% csrf_token %}
+                        {% bootstrap_form form_pass %}
+                        {% buttons %}
+                            <input type="submit" class="btn btn-primary" value="Поменять">
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                        Emal-адрес
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form method="POST" action="change_mail">
+                            <h1>
+                                Сменить почту
+                            </h1>
+                            {% csrf_token %}
+                            {% bootstrap_form form_mail %}
+                            {% buttons %}
+                                <input type="submit" class="btn btn-primary" value="Поменять">
+                            {% endbuttons %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
+                        Имя пользователя
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form method="POST" action="change_username">
+                            <h1>
+                                Изменить логин
+                            </h1>
+                            {% csrf_token %}
+                            {% bootstrap_form form_username %}
+                            {% buttons %}
+                                <input type="submit" class="btn btn-primary" value="Поменять">
+                            {% endbuttons %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h6 style="margin-top: 5px; margin-left: 5px">
+            Дата регистрации: {{ user.date_joined }}
+        </h6>
+    </div>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"
+            style="margin: auto; display: block">Удалить аккаунт
+    </button>
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Вы уверены, что хотите удалить этот аккаунт?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                    <button id="delete_acc" type="button" class="btn btn-danger">Удалить</button>
+                    <script type="text/javascript">
+                        document.getElementById("delete_acc").onclick = function () {
+                            location.href = '/delete_acc'
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
